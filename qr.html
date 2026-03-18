@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zatorii — Scan Me</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: #0f0e0c;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    width: 100%;
+    max-width: 360px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(176,125,46,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .ring-1 { width: 420px; height: 420px; }
+  .ring-2 { width: 560px; height: 560px; border-color: rgba(176,125,46,0.08); }
+  .wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #b07d2e;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.9rem;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .headline em { font-style: italic; color: #e8c97a; }
+  .sub {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .qr-frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .qr-frame::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 23px;
+    border: 1px solid rgba(176,125,46,0.4);
+  }
+  #qr canvas, #qr img { display: block; border-radius: 4px; }
+  .url {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    margin-bottom: 2.5rem;
+  }
+  .divider {
+    height: 0.5px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 1.5rem;
+  }
+  .instruction {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+  .instruction strong {
+    color: #e8c97a;
+    font-weight: 500;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeIn 0.5s ease both; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+
+  <span class="wordmark">Zatorii Business Solutions</span>
+
+  <h1 class="headline">Your business should run,<br><em>not run you.</em></h1>
+  <p class="sub">Scan to learn what we do and book a free consulting call.</p>
+
+  <div class="qr-frame">
+    <div id="qr"></div>
+  </div>
+
+  <p class="url">zatorii-card.vercel.app</p>
+
+  <div class="divider"></div>
+
+  <p class="instruction">
+    Open your camera app and<br>
+    point it at the code above.<br>
+    <strong>No app needed.</strong>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qr"), {
+    text: "https://zatorii-card.vercel.app",
+    width: 220,
+    height: 220,
+    colorDark: "#0f0e0c",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+</body>
+</html>
